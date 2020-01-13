@@ -8,5 +8,7 @@
 #define MIN_i_phase -2
 #define MAX_vd_vq 12
 #define MIN_vd_vq -12
+#define MAX_v_phase 11
+#define MIN_v_phase -11
 
 #endif // LIMITATION_H

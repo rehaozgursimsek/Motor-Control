@@ -1,4 +1,5 @@
 #include "clarke.h"
+#include "main.h"
 #include "error_table.h"
 #include "park.h"
 #include "pi_controller.h"
@@ -6,35 +7,36 @@
 #include "svm.h"
 #include "limitation.h"
 #include <stdio.h>
+#include <stdint.h>
 
-float_t a = 0.5;
-float_t b = -1.5;
-float_t c = 1;
 
-float_t theta_rotor = PI/6;
-float_t alpha = 0, beta = 0;
-float_t dc_bus = 11;
-float_t iden_theta = 0;
-int sector = 0;
+float a = 1;
+float b = -2;
+float c = 1;
 
-float_t i_d = 0, i_q = 0;
-float_t v_d = 0, v_q = 0;
+float theta_rotor = PI/4;
+float alpha = 0, beta = 0;
+float dc_bus = 11;
+float iden_theta = 0;
+uint8_t sector = 0;
 
-float_t v_pi = 0; // PI controller voltage output
-float_t v_int = 0; // PI controller integral part
-float_t v_prop = 0; // PI controller proportional part
+float i_d = 0, i_q = 0;
+float v_d = 0, v_q = 0;
 
-float_t v_alpha = 0, v_beta = 0;
+float v_pi = 0; // PI controller voltage output
+float v_int = 0; // PI controller integral part
+float v_prop = 0; // PI controller proportional part
 
-float_t id_ref = 0;
-float_t iq_ref = 0.1;
+float v_alpha = 0, v_beta = 0;
 
-float_t k_p = 4;
-float_t k_i = 1;
+float id_ref = 0;
+float iq_ref = 0.1;
 
-float_t v_a = 0, v_b = 0, v_c = 0;
+float k_p = 4;
+float k_i = 2;
 
-_Bool error_fl = 0;
+float v_a = 0, v_b = 0, v_c = 0;
+float va_duty =0, vb_duty = 0, vc_duty = 0;
 
 int8_t MC_ERROR = 0;
 int main()
@@ -70,8 +72,16 @@ int main()
                     }else{
                         error_fl = 0;
                         MC_ERROR = get_inv_clarke(v_alpha, v_beta, &v_a, &v_b, &v_c);
-                        MC_ERROR = get_identf_theta(v_d, v_q, &iden_theta);
-                        MC_ERROR = get_sector_identf(iden_theta, &sector);
+                        if(MC_ERROR != 0)
+                        {
+                            error_fl = 1;
+                        }else{
+                            error_fl = 0;
+                            MC_ERROR = get_ident_theta(v_alpha, v_beta, &iden_theta);
+                            MC_ERROR = get_sector_ident(iden_theta, &sector);
+                            MC_ERROR = set_duty(sector, dc_bus, v_a, v_b, v_c, &va_duty, &vb_duty, &vc_duty);
+                        }
+
                     }
                 }
             }
@@ -85,6 +95,7 @@ int main()
     printf("v_a=%f v_b=%f v_c=%f\n", v_a, v_b, v_c);
     printf("ERROR=%d\n", MC_ERROR);
     printf("identification theta=%f Sector=%d\n", iden_theta, sector);
+    printf("va duty=%f vb duty=%f vc duty=%f\n", va_duty, vb_duty, vc_duty);
 
     return 0;
 

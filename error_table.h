@@ -1,11 +1,12 @@
 #ifndef ERROR_TABLE_H
 #define ERROR_TABLE_H
 
-/* Error Table Start*/
-#define NO_ERROR 0
-#define CURRENT_LIMIT_MISMATCH 2
-#define VOLTAGE_LIMIT_MISMATCH 4
-/* Error Table End*/
+
+enum CONTROL_ABORT{
+    NO_ERROR = 0x00,
+    CURRENT_LIMIT_MISMATCH = 0x02,
+    VOLTAGE_LIMIT_MISMATCH = 0x04
+};
 
 #endif // ERROR_TABLE_H
 

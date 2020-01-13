@@ -17,6 +17,7 @@ HEADERS += \
     clarke.h \
     error_table.h \
     limitation.h \
+    main.h \
     park.h \
     pi_controller.h \
     svm.h \

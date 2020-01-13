@@ -3,12 +3,12 @@
 
 /**
  * @brief get_identf_theta
- * @param v_d
- * @param v_q
+ * @param v_alpha
+ * @param v_beta
  * @param iden_theta
  * @return
  */
-int get_identf_theta(float v_d, float v_q, float *iden_theta);
+int get_ident_theta(float v_alpha, float v_beta, float *iden_theta);
 
 /**
  * @brief get_sector_identf
@@ -16,6 +16,20 @@ int get_identf_theta(float v_d, float v_q, float *iden_theta);
  * @param sector
  * @return
  */
-int get_sector_identf(float iden_theta, int *sector);
+int get_sector_ident(float iden_theta, int *sector);
+
+/**
+ * @brief set_duty
+ * @param sector
+ * @param dc_bus
+ * @param v_a
+ * @param v_b
+ * @param v_c
+ * @param va_duty
+ * @param vb_duty
+ * @param vc_duty
+ * @return
+ */
+int set_duty(int sector, float dc_bus, float v_a, float v_b, float v_c, float *va_duty, float *vb_duty, float *vc_duty);
 
 #endif // SVM_H
