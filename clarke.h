@@ -1,6 +1,8 @@
 #ifndef CLARKE_H
 #define CLARKE_H
 
+#include <main.h>
+
 /**
  * @brief get_clarke
  * @param a_phase
@@ -10,7 +12,7 @@
  * @param beta
  * @return
  */
-int get_clarke(int a_phase, int b_phase, int c_phase, float* alpha, float* beta);
+int get_clarke(int a_phase, int b_phase, int c_phase, MC_ALPHABETA_T *mcAlphaBeta);
 
 /**
  * @brief get_inv_clarke

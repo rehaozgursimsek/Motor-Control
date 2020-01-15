@@ -16,7 +16,7 @@ int get_ident_theta(float v_alpha, float v_beta, float *iden_theta);
  * @param sector
  * @return
  */
-int get_sector_ident(float iden_theta, int *sector);
+int get_sector_ident(float iden_theta, unsigned char *sector);
 
 /**
  * @brief set_duty
@@ -30,6 +30,7 @@ int get_sector_ident(float iden_theta, int *sector);
  * @param vc_duty
  * @return
  */
-int set_duty(int sector, float dc_bus, float v_a, float v_b, float v_c, float *va_duty, float *vb_duty, float *vc_duty);
+//int set_duty(int sector, float dc_bus, float v_a, float v_b, float v_c, float *va_duty, float *vb_duty, float *vc_duty);
+int set_duty(unsigned char sector, float iden_theta, float dc_bus, float v_a, float v_b, float v_c, float v_alpha, float v_beta,float *v0_duty, float *v1_duty, float *v2_duty);
 
 #endif // SVM_H
