@@ -39,6 +39,8 @@ float v_a = 0, v_b = 0, v_c = 0;
 float va_duty =0, vb_duty = 0, vc_duty = 0;
 float v0_duty= 0, v1_duty =0, v2_duty = 0;
 
+MC_ALPHABETA_T mcAlphaBeta;
+
 int8_t MC_ERROR = 0;
 int main()
 {
@@ -91,7 +93,7 @@ int main()
     }
 
     printf("a=%f b=%f c=%f id_ref=%f iq_ref=%f theta=%f\n", a, b, c, id_ref, iq_ref, theta_rotor);
-    printf("alpha=%f beta=%f id=%f iq=%f\n", mcAlphaBeta->alpha, mcAlphaBeta->beta, i_d, i_q);
+    printf("alpha=%f beta=%f id=%f iq=%f\n", mcAlphaBeta.alpha, mcAlphaBeta.beta, i_d, i_q);
     printf("v_d=%f v_q=%f\n", v_d, v_q);
     printf("v_alpha=%f v_beta=%f\n", v_alpha, v_beta);
     printf("v_a=%f v_b=%f v_c=%f\n", v_a, v_b, v_c);
