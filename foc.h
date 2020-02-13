@@ -2,6 +2,7 @@
 #define FOC_H
 
 #include <stdint.h>
+#include "err_table.h"
 
 int8_t MC_ERROR;
 
@@ -123,7 +124,7 @@ int foc_init(m_foc_t *m_foc,
     unsigned mref_,
     uint16_t **pwm_channels_);
 */
-int MC_FOC_Init(MC_FOC_T *m_foc_t,
+MC_CONTROL_ABORT_T MC_FOC_Init(MC_FOC_T *m_foc_t,
                 int(*fast_loop_handler)(MC_FOC_T *mc_foc_t),
                 /*float speed_ref*/ float id_ref, float iq_ref);
 

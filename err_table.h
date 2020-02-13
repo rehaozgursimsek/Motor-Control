@@ -1,10 +1,10 @@
 #ifndef ERR_TABLE_H
 #define ERR_TABLE_H
 
-enum CONTROL_ABORT{
+typedef enum CONTROL_ABORT{
     NO_ERROR = 0x00,
     CURRENT_LIMIT_MISMATCH = 0x02,
     VOLTAGE_LIMIT_MISMATCH = 0x04
-};
+}MC_CONTROL_ABORT_T;
 
 #endif // ERR_TABLE_H

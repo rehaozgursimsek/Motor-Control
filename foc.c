@@ -8,7 +8,7 @@
 #include "motor_ch.h"
 
 
-int MC_FOC_Init(MC_FOC_T *mc_foc_t,
+MC_CONTROL_ABORT_T MC_FOC_Init(MC_FOC_T *mc_foc_t,
                 int(*fast_loop_handler)(MC_FOC_T *),
                 /*float speed_ref*/float id_ref,float iq_ref)
 {
