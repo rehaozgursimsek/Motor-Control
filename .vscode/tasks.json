@@ -1,0 +1,32 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang build main + SineGenerator",
+            "command": "/usr/bin/clang",
+            "args": [
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "${fileDirname}/adc.c",               
+                "${fileDirname}/foc.c",      
+                "${fileDirname}/main.c",      
+                "${fileDirname}/pwm.c",      
+                "-o",
+                "${fileDirname}/main"                  
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build main and SineGenerator together"
+        }
+    ],
+    "version": "2.0.0"
+}

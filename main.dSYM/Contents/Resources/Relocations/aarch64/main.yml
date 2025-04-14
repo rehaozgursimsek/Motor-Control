@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/rehaozgursimsek/Coding/Motor-Control/main'
+relocations:     []
+...
